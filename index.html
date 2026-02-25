@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,58 +12,87 @@
             box-shadow: inset 0px 10px 15px -3px rgba(0, 0, 0, 0.2), inset 0px -10px 15px -3px rgba(0, 0, 0, 0.2);
             background: linear-gradient(to bottom, #e5e7eb 0%, #ffffff 20%, #ffffff 80%, #e5e7eb 100%);
         }
+
         /* 回転時のぼかしエフェクト */
         .blur-text {
-            filter: blur(1.5px); /* 速度を落としたのでぼかしを少し弱く調整 */
+            filter: blur(1.5px);
+            /* 速度を落としたのでぼかしを少し弱く調整 */
             opacity: 0.6;
         }
+
         /* アナウンス用のアニメーション */
         @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
+
         .animate-pop-in {
             animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
     </style>
 </head>
+
 <body class="bg-gray-100 min-h-screen p-2 sm:p-4 md:p-8 font-sans text-gray-800 relative">
     <!-- エラーメッセージ用トースト -->
-    <div id="error-message" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-3 rounded-full shadow-xl z-50 font-bold text-sm sm:text-base transition-all duration-300 opacity-0 pointer-events-none"></div>
+    <div id="error-message"
+        class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-3 rounded-full shadow-xl z-50 font-bold text-sm sm:text-base transition-all duration-300 opacity-0 pointer-events-none">
+    </div>
 
     <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
-        
+
         <!-- ヘッダー -->
-        <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 md:p-6 text-center shadow-md relative z-10">
+        <header
+            class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 md:p-6 text-center shadow-md relative z-10">
             <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-wider">🎰 なんでもスロット 🎰</h1>
-            <p class="mt-2 text-blue-100 text-xs sm:text-sm md:text-base">水ダウ「満腹じゃんけん」ができる！！じゃんけんにしたい項目をリストに追加してね！！星形マーク(⭐)が揃ったらチャンス！？</p>
+            <p class="mt-2 text-blue-100 text-xs sm:text-sm md:text-base">
+                水ダウ「満腹じゃんけん」ができる！！じゃんけんにしたい項目をリストに追加してね！！星形マーク(⭐)が揃ったらチャンス！？</p>
         </header>
 
         <div class="flex flex-col gap-10 md:gap-12 p-4 md:p-8 max-w-4xl mx-auto">
-            
+
             <!-- 上段：リスト入力エリア -->
             <div class="flex flex-col w-full">
                 <div class="bg-blue-50 p-4 sm:p-6 rounded-xl border border-blue-100 flex flex-col shadow-sm">
                     <h2 class="text-lg sm:text-xl font-bold mb-4 text-blue-800 flex items-center">
-                        <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                            </path>
+                        </svg>
                         1. 項目を入力 (最低3つ)
                     </h2>
-                    
+
                     <div class="flex gap-2 mb-6">
-                        <input type="text" id="item-input" class="flex-1 w-full border-2 border-gray-300 rounded-lg px-3 sm:px-4 py-2 sm:py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-base sm:text-lg" placeholder="例：焼肉、ラーメン...">
-                        <button id="add-btn" class="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition font-bold shadow whitespace-nowrap">追加</button>
+                        <input type="text" id="item-input"
+                            class="flex-1 w-full border-2 border-gray-300 rounded-lg px-3 sm:px-4 py-2 sm:py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-base sm:text-lg"
+                            placeholder="例：焼肉、ラーメン...">
+                        <button id="add-btn"
+                            class="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition font-bold shadow whitespace-nowrap">追加</button>
                     </div>
 
                     <div class="flex justify-between items-center mb-2">
                         <h2 class="text-base sm:text-lg font-bold text-gray-700">スロット候補リスト</h2>
                         <div class="flex items-center gap-2">
-                            <button id="edit-btn" class="text-xs sm:text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 transition font-bold">選択削除</button>
-                            <button id="delete-selected-btn" class="hidden text-xs sm:text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition font-bold shadow-sm">削除実行</button>
-                            <button id="cancel-edit-btn" class="hidden text-xs sm:text-sm bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 transition font-bold shadow-sm">キャンセル</button>
-                            <span class="text-xs sm:text-sm text-gray-500 font-medium ml-2">項目数: <span id="item-count" class="text-blue-600 font-bold">0</span></span>
+                            <button id="edit-btn"
+                                class="text-xs sm:text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 transition font-bold">選択削除</button>
+                            <button id="delete-selected-btn"
+                                class="hidden text-xs sm:text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition font-bold shadow-sm">削除実行</button>
+                            <button id="cancel-edit-btn"
+                                class="hidden text-xs sm:text-sm bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 transition font-bold shadow-sm">キャンセル</button>
+                            <span class="text-xs sm:text-sm text-gray-500 font-medium ml-2">項目数: <span id="item-count"
+                                    class="text-blue-600 font-bold">0</span></span>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg p-3 sm:p-4 border border-gray-200 overflow-y-auto max-h-[250px] shadow-inner">
+                    <div
+                        class="bg-white rounded-lg p-3 sm:p-4 border border-gray-200 overflow-y-auto max-h-[250px] shadow-inner">
                         <ul id="item-list" class="space-y-2">
                             <li class="text-gray-400 italic text-center py-8 text-sm sm:text-base">項目を追加してください</li>
                         </ul>
@@ -73,54 +103,73 @@
             <!-- 下段：スロットエリア -->
             <div class="flex flex-col items-center justify-center w-full">
                 <h2 class="text-lg sm:text-2xl font-bold mb-6 text-gray-800 w-full text-center">2. スロットを回す</h2>
-                
+
                 <!-- スロットマシン本体 -->
-                <div class="bg-gray-800 p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl mb-8 md:mb-10 relative border-4 border-gray-700 w-full max-w-2xl">
+                <div
+                    class="bg-gray-800 p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl mb-8 md:mb-10 relative border-4 border-gray-700 w-full max-w-2xl">
                     <!-- マシンの装飾 -->
                     <div class="absolute top-3 left-3 right-3 flex justify-between px-2 sm:px-6">
                         <div class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-red-500 animate-pulse"></div>
-                        <div class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-400 animate-pulse" style="animation-delay: 0.5s"></div>
-                        <div class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-green-500 animate-pulse" style="animation-delay: 1s"></div>
+                        <div class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-400 animate-pulse"
+                            style="animation-delay: 0.5s"></div>
+                        <div class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-green-500 animate-pulse"
+                            style="animation-delay: 1s"></div>
                     </div>
 
                     <!-- 判定ライン（横中央一直線） -->
-                    <div class="absolute w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] h-1.5 sm:h-2 bg-red-500 top-1/2 transform -translate-y-1/2 z-10 opacity-80 left-3 sm:left-6 md:left-8 pointer-events-none shadow-[0_0_12px_rgba(239,68,68,1)] md:shadow-[0_0_16px_rgba(239,68,68,1)]"></div>
-                    
+                    <div
+                        class="absolute w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] h-1.5 sm:h-2 bg-red-500 top-1/2 transform -translate-y-1/2 z-10 opacity-80 left-3 sm:left-6 md:left-8 pointer-events-none shadow-[0_0_12px_rgba(239,68,68,1)] md:shadow-[0_0_16px_rgba(239,68,68,1)]">
+                    </div>
+
                     <div class="flex justify-center gap-4 sm:gap-6 md:gap-10 mt-6 sm:mt-8">
                         <!-- 左リール -->
-                        <div class="reel-container relative w-24 h-36 sm:w-36 sm:h-56 md:w-48 md:h-72 rounded-xl flex flex-col justify-between items-center py-2 sm:py-4 overflow-hidden border-2 border-gray-400">
+                        <div
+                            class="reel-container relative w-24 h-36 sm:w-36 sm:h-56 md:w-48 md:h-72 rounded-xl flex flex-col justify-between items-center py-2 sm:py-4 overflow-hidden border-2 border-gray-400">
                             <div id="reel-0-top" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?</div>
-                            <div id="reel-0-center" class="text-5xl sm:text-7xl md:text-8xl font-black text-gray-900 z-20">?</div>
-                            <div id="reel-0-bottom" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?</div>
+                            <div id="reel-0-center"
+                                class="text-5xl sm:text-7xl md:text-8xl font-black text-gray-900 z-20">?</div>
+                            <div id="reel-0-bottom" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?
+                            </div>
                         </div>
                         <!-- 中リール -->
-                        <div class="reel-container relative w-24 h-36 sm:w-36 sm:h-56 md:w-48 md:h-72 rounded-xl flex flex-col justify-between items-center py-2 sm:py-4 overflow-hidden border-2 border-gray-400">
+                        <div
+                            class="reel-container relative w-24 h-36 sm:w-36 sm:h-56 md:w-48 md:h-72 rounded-xl flex flex-col justify-between items-center py-2 sm:py-4 overflow-hidden border-2 border-gray-400">
                             <div id="reel-1-top" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?</div>
-                            <div id="reel-1-center" class="text-5xl sm:text-7xl md:text-8xl font-black text-gray-900 z-20">?</div>
-                            <div id="reel-1-bottom" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?</div>
+                            <div id="reel-1-center"
+                                class="text-5xl sm:text-7xl md:text-8xl font-black text-gray-900 z-20">?</div>
+                            <div id="reel-1-bottom" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?
+                            </div>
                         </div>
                         <!-- 右リール -->
-                        <div class="reel-container relative w-24 h-36 sm:w-36 sm:h-56 md:w-48 md:h-72 rounded-xl flex flex-col justify-between items-center py-2 sm:py-4 overflow-hidden border-2 border-gray-400">
+                        <div
+                            class="reel-container relative w-24 h-36 sm:w-36 sm:h-56 md:w-48 md:h-72 rounded-xl flex flex-col justify-between items-center py-2 sm:py-4 overflow-hidden border-2 border-gray-400">
                             <div id="reel-2-top" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?</div>
-                            <div id="reel-2-center" class="text-5xl sm:text-7xl md:text-8xl font-black text-gray-900 z-20">?</div>
-                            <div id="reel-2-bottom" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?</div>
+                            <div id="reel-2-center"
+                                class="text-5xl sm:text-7xl md:text-8xl font-black text-gray-900 z-20">?</div>
+                            <div id="reel-2-bottom" class="text-xl sm:text-3xl md:text-4xl text-gray-400 font-bold">?
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- コントロールボタン -->
                 <div class="w-full flex justify-center items-center min-h-[80px] sm:min-h-[100px] mt-2 px-4">
-                    <button id="start-btn" class="w-full max-w-[320px] sm:max-w-md bg-red-600 text-white text-2xl sm:text-3xl font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-full shadow-[0_6px_0_#991b1b] sm:shadow-[0_8px_0_#991b1b] hover:bg-red-500 hover:shadow-[0_4px_0_#991b1b] sm:hover:shadow-[0_4px_0_#991b1b] hover:translate-y-[2px] sm:hover:translate-y-[4px] active:shadow-[0_0px_0_#991b1b] active:translate-y-[6px] sm:active:translate-y-[8px] transition-all">
+                    <button id="start-btn"
+                        class="w-full max-w-[320px] sm:max-w-md bg-red-600 text-white text-2xl sm:text-3xl font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-full shadow-[0_6px_0_#991b1b] sm:shadow-[0_8px_0_#991b1b] hover:bg-red-500 hover:shadow-[0_4px_0_#991b1b] sm:hover:shadow-[0_4px_0_#991b1b] hover:translate-y-[2px] sm:hover:translate-y-[4px] active:shadow-[0_0px_0_#991b1b] active:translate-y-[6px] sm:active:translate-y-[8px] transition-all">
                         スロット開始
                     </button>
-                    <div id="stop-btns-container" class="hidden flex justify-center gap-4 sm:gap-6 md:gap-10 w-full max-w-2xl">
-                        <button id="stop-btn-0" class="w-24 sm:w-36 md:w-48 bg-yellow-400 text-yellow-900 text-4xl sm:text-5xl md:text-6xl font-bold py-3 sm:py-4 rounded-full shadow-[0_6px_0_#b45309] sm:shadow-[0_8px_0_#b45309] hover:bg-yellow-300 hover:shadow-[0_4px_0_#b45309] sm:hover:shadow-[0_4px_0_#b45309] hover:translate-y-[2px] sm:hover:translate-y-[4px] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] sm:active:translate-y-[8px] disabled:shadow-[0_0px_0_#b45309] disabled:translate-y-[6px] sm:disabled:translate-y-[8px] disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center">
+                    <div id="stop-btns-container"
+                        class="hidden flex justify-center gap-4 sm:gap-6 md:gap-10 w-full max-w-2xl">
+                        <button id="stop-btn-0"
+                            class="w-24 sm:w-36 md:w-48 bg-yellow-400 text-yellow-900 text-4xl sm:text-5xl md:text-6xl font-bold py-3 sm:py-4 rounded-full shadow-[0_6px_0_#b45309] sm:shadow-[0_8px_0_#b45309] hover:bg-yellow-300 hover:shadow-[0_4px_0_#b45309] sm:hover:shadow-[0_4px_0_#b45309] hover:translate-y-[2px] sm:hover:translate-y-[4px] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] sm:active:translate-y-[8px] disabled:shadow-[0_0px_0_#b45309] disabled:translate-y-[6px] sm:disabled:translate-y-[8px] disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center">
                             ✊
                         </button>
-                        <button id="stop-btn-1" class="w-24 sm:w-36 md:w-48 bg-yellow-400 text-yellow-900 text-4xl sm:text-5xl md:text-6xl font-bold py-3 sm:py-4 rounded-full shadow-[0_6px_0_#b45309] sm:shadow-[0_8px_0_#b45309] hover:bg-yellow-300 hover:shadow-[0_4px_0_#b45309] sm:hover:shadow-[0_4px_0_#b45309] hover:translate-y-[2px] sm:hover:translate-y-[4px] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] sm:active:translate-y-[8px] disabled:shadow-[0_0px_0_#b45309] disabled:translate-y-[6px] sm:disabled:translate-y-[8px] disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center">
+                        <button id="stop-btn-1"
+                            class="w-24 sm:w-36 md:w-48 bg-yellow-400 text-yellow-900 text-4xl sm:text-5xl md:text-6xl font-bold py-3 sm:py-4 rounded-full shadow-[0_6px_0_#b45309] sm:shadow-[0_8px_0_#b45309] hover:bg-yellow-300 hover:shadow-[0_4px_0_#b45309] sm:hover:shadow-[0_4px_0_#b45309] hover:translate-y-[2px] sm:hover:translate-y-[4px] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] sm:active:translate-y-[8px] disabled:shadow-[0_0px_0_#b45309] disabled:translate-y-[6px] sm:disabled:translate-y-[8px] disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center">
                             ✌️
                         </button>
-                        <button id="stop-btn-2" class="w-24 sm:w-36 md:w-48 bg-yellow-400 text-yellow-900 text-4xl sm:text-5xl md:text-6xl font-bold py-3 sm:py-4 rounded-full shadow-[0_6px_0_#b45309] sm:shadow-[0_8px_0_#b45309] hover:bg-yellow-300 hover:shadow-[0_4px_0_#b45309] sm:hover:shadow-[0_4px_0_#b45309] hover:translate-y-[2px] sm:hover:translate-y-[4px] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] sm:active:translate-y-[8px] disabled:shadow-[0_0px_0_#b45309] disabled:translate-y-[6px] sm:disabled:translate-y-[8px] disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center">
+                        <button id="stop-btn-2"
+                            class="w-24 sm:w-36 md:w-48 bg-yellow-400 text-yellow-900 text-4xl sm:text-5xl md:text-6xl font-bold py-3 sm:py-4 rounded-full shadow-[0_6px_0_#b45309] sm:shadow-[0_8px_0_#b45309] hover:bg-yellow-300 hover:shadow-[0_4px_0_#b45309] sm:hover:shadow-[0_4px_0_#b45309] hover:translate-y-[2px] sm:hover:translate-y-[4px] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] sm:active:translate-y-[8px] disabled:shadow-[0_0px_0_#b45309] disabled:translate-y-[6px] sm:disabled:translate-y-[8px] disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center">
                             🖐️
                         </button>
                     </div>
@@ -130,7 +179,8 @@
 
         <!-- 結果表示エリア -->
         <div id="result-container" class="hidden bg-yellow-50 p-4 sm:p-6 md:p-10 border-t-4 border-yellow-400">
-            <h2 class="text-2xl sm:text-3xl font-black text-center text-yellow-800 mb-6 sm:mb-8 tracking-wide">🎯 結果発表 🎯</h2>
+            <h2 class="text-2xl sm:text-3xl font-black text-center text-yellow-800 mb-6 sm:mb-8 tracking-wide">🎯 結果発表
+                🎯</h2>
             <div id="result-area" class="max-w-2xl mx-auto">
                 <!-- JSで結果を挿入 -->
             </div>
@@ -142,10 +192,10 @@
         let items = [];
         let nextId = 1;
         let reelIntervals = [null, null, null];
-        
+
         // 回転が止まった時に中央に表示する最終的なID
-        let targetReelValues = [null, null, null]; 
-        
+        let targetReelValues = [null, null, null];
+
         let isReelStopped = [false, false, false]; // 各リールの停止状態
         let stoppedReels = 0; // 停止したリールの数
         let isSpinning = false;
@@ -196,7 +246,7 @@
             const checkboxes = itemList.querySelectorAll('.delete-checkbox:checked');
             // 値をすべて文字列に統一して確実に比較できるように修正
             const idsToDelete = Array.from(checkboxes).map(cb => String(cb.value));
-            
+
             if (idsToDelete.length === 0) {
                 showError('削除する項目にチェックを入れてください。');
                 return;
@@ -204,12 +254,12 @@
 
             // iframe環境でブロックされるため confirm は使用せず、即座に削除処理を実行
             items = items.filter(item => !idsToDelete.includes(String(item.id)));
-            
+
             // 残った項目の番号（ID）を1から順に綺麗に振り直す
             items.forEach((item, index) => {
                 item.id = index + 1;
             });
-            
+
             // 次に追加される項目の番号を更新（空になった場合は自動的に1になる）
             nextId = items.length + 1;
 
@@ -224,12 +274,12 @@
         });
 
         // --- 関数 ---
-        
+
         // 項目を追加する
         function addItem() {
             const text = itemInput.value.trim();
             if (!text) return;
-            
+
             items.push({ id: nextId++, text: text });
             itemInput.value = '';
             itemInput.focus();
@@ -270,25 +320,25 @@
                 editBtn.classList.add('hidden');
                 deleteSelectedBtn.classList.remove('hidden');
                 cancelEditBtn.classList.remove('hidden');
-                
+
                 // 削除中は入力とスロット開始をロック
                 itemInput.disabled = true;
                 addBtn.disabled = true;
                 itemInput.classList.add('opacity-50', 'bg-gray-100');
                 addBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                
+
                 startBtn.disabled = true;
                 startBtn.classList.add('opacity-50', 'cursor-not-allowed');
             } else {
                 editBtn.classList.remove('hidden');
                 deleteSelectedBtn.classList.add('hidden');
                 cancelEditBtn.classList.add('hidden');
-                
+
                 itemInput.disabled = false;
                 addBtn.disabled = false;
                 itemInput.classList.remove('opacity-50', 'bg-gray-100');
                 addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                
+
                 startBtn.disabled = false;
                 startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             }
@@ -314,13 +364,13 @@
             const errorEl = document.getElementById('error-message');
             errorEl.innerText = msg;
             errorEl.classList.remove('hidden');
-            
+
             // 少し遅らせてopacityを1にすることでフェードイン
             setTimeout(() => {
                 errorEl.classList.remove('opacity-0');
                 errorEl.classList.add('opacity-100');
             }, 10);
-            
+
             // 3秒後にフェードアウト
             setTimeout(() => {
                 errorEl.classList.remove('opacity-100');
@@ -342,7 +392,7 @@
             isReelStopped = [false, false, false];
             resultContainer.classList.add('hidden');
             resultArea.innerHTML = '';
-            
+
             // 入力操作のロック
             itemInput.disabled = true;
             addBtn.disabled = true;
@@ -350,7 +400,7 @@
             itemInput.classList.add('opacity-50', 'cursor-not-allowed');
             addBtn.classList.add('opacity-50', 'cursor-not-allowed');
             editBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            
+
             // ボタンの切り替え
             startBtn.classList.add('hidden');
             stopBtnsContainer.classList.remove('hidden');
@@ -377,7 +427,7 @@
                 document.getElementById(`reel-${i}-top`).classList.add('blur-text');
                 document.getElementById(`reel-${i}-center`).classList.add('blur-text');
                 document.getElementById(`reel-${i}-bottom`).classList.add('blur-text');
-                
+
                 reelIntervals[i] = setInterval(() => {
                     document.getElementById(`reel-${i}-top`).innerText = getRandomId(displayIds);
                     document.getElementById(`reel-${i}-center`).innerText = getRandomId(displayIds);
@@ -392,10 +442,10 @@
 
             const validIds = items.map(item => item.id);
             const displayIds = [...validIds, STAR_MARK];
-            
+
             // 対象のリールの回転アニメーションを停止
             clearInterval(reelIntervals[reelIndex]);
-            
+
             // エフェクトを解除
             document.getElementById(`reel-${reelIndex}-top`).classList.remove('blur-text');
             document.getElementById(`reel-${reelIndex}-center`).classList.remove('blur-text');
@@ -404,13 +454,13 @@
             // --- 結果の確定表示 ---
             // 中央には抽選済みの「確定ID」を表示
             document.getElementById(`reel-${reelIndex}-center`).innerText = targetReelValues[reelIndex];
-            
+
             // 上下にはダミーで別のIDを表示（スロットの雰囲気を出すため）
             let dummyTop = getRandomId(displayIds);
-            while(dummyTop === targetReelValues[reelIndex] && displayIds.length > 1) dummyTop = getRandomId(displayIds);
-            
+            while (dummyTop === targetReelValues[reelIndex] && displayIds.length > 1) dummyTop = getRandomId(displayIds);
+
             let dummyBottom = getRandomId(displayIds);
-            while((dummyBottom === targetReelValues[reelIndex] || dummyBottom === dummyTop) && displayIds.length > 2) dummyBottom = getRandomId(displayIds);
+            while ((dummyBottom === targetReelValues[reelIndex] || dummyBottom === dummyTop) && displayIds.length > 2) dummyBottom = getRandomId(displayIds);
 
             document.getElementById(`reel-${reelIndex}-top`).innerText = dummyTop;
             document.getElementById(`reel-${reelIndex}-bottom`).innerText = dummyBottom;
@@ -418,19 +468,19 @@
             // 状態の更新
             isReelStopped[reelIndex] = true;
             stoppedReels++;
-            
+
             // 押されたボタンを無効化（沈み込んだ見た目になる）
             stopBtns[reelIndex].disabled = true;
 
             // 全て停止時の処理
             if (stoppedReels === 3) {
                 isSpinning = false;
-                
+
                 // 少しだけ「タメ」を作ってから結果表示
                 setTimeout(() => {
                     stopBtnsContainer.classList.add('hidden');
                     startBtn.classList.remove('hidden');
-                    
+
                     // 入力操作のロック解除
                     itemInput.disabled = false;
                     addBtn.disabled = false;
@@ -438,7 +488,7 @@
                     itemInput.classList.remove('opacity-50', 'cursor-not-allowed');
                     addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
                     editBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                    
+
                     showResult();
                 }, 600);
             }
@@ -516,4 +566,5 @@
         }
     </script>
 </body>
+
 </html>
